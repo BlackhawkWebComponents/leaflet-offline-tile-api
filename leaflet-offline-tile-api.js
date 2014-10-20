@@ -71,26 +71,29 @@
     }();
 
     Polymer({
+        downloading: false,
         observe: {
             'storage': 'testPyramid'
         },
         testPyramid: function () {
-            /**
-            if (this.storage) {
+            if (this.storage && !this.downloading) {
+                this.downloading = true;
                 console.log('testPyramid');
-                var x = tileUtils.pyramid('rbeers.j1mhej3b', 38.235261, -79.609084, {});
+                var x = tileUtils.pyramid('rbeers.j1mhej3b', 38.235261, -79.609084,
+                    {zoomLimit: 14, maxZoom: 14, minZoom:13});
                 //console.log(JSON.stringify(x, null, 2));
+                console.log('downloading: ' + x.length + ' tiles');
+
                 for (var i = 0; i < x.length; ++i) {
                     this.downloadTile(x[i].x, x[i].y, x[i].z);
                 }
-
-            }**/
+            }
         },
         downloadTile: function(x, y, z) {
             var url = 'http://api.tiles.mapbox.com/v3/'
                     + 'rbeers.j1mhej3b' + '/' + z + '/'
                     + x + '/' + y + '.png';
-            console.log('downloading tile: ' + url);
+            //console.log('downloading tile: ' + url);
 
             var xhr = new XMLHttpRequest(),
                     fileReader = new FileReader();
@@ -104,7 +107,7 @@
                     fileReader.onload = function (evt) {
                         // Read out file contents as a Data URL
                         var result = evt.target.result;
-                        console.log('filereader result: ', result);
+                        //console.log('filereader result: ', result);
                         self.saveTile(x, y, z, result);
                     };
                     // Load blob as Data URL
@@ -116,7 +119,7 @@
         },
         saveTile: function(x, y, z, dataurl) {
             var key = z + ',' + y + ',' + x;
-            console.log('saving tile with key: ' + key);
+            //console.log('saving tile with key: ' + key);
             this.storage.add(key, dataurl);
         }
     });

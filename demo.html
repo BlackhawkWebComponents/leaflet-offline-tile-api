@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>leaflet-offline-tile-api Demo</title>
+
+    <script src="../platform/platform.js"></script>
+    <link rel="import" href="../leaflet-map/leaflet-map.html">
+    <link rel="import" href="leaflet-offline-tile-api.html">
+
+    <style>
+        body {
+            height: 100%;
+            margin: 1em;
+            font-family: Arial;
+        }
+
+        leaflet-map {
+            max-width: 40em;
+            height: 30em;
+            border: 1px solid #aaa;
+        }
+
+    </style>
+</head>
+<body unresolved>
+
+<template is="auto-binding">
+
+    <p>A <code>&lt;leaflet-offline-tile-api&gt;</code> looks like this:</p>
+
+
+    <leaflet-offline-tile-api
+            url="http://{s}.tiles.mapbox.com/v3/rbeers.j1mhej3b/{z}/{x}/{y}.png" noWrap>
+    </leaflet-offline-tile-api>
+
+
+</template>
+
+<script>
+    var t = document.querySelector('template');
+</script>
+
+</body>
+</html>

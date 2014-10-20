@@ -1,0 +1,29 @@
+{
+    "name": "leaflet-offline-tile-api",
+    "homepage": "http://blackhawkwebcomponents.github.io/leaflet-offline-tile-api",
+    "description": "",
+    "main": "leaflet-offline-tile-api.html",
+    "authors": [
+        "Rob Beers"
+    ],
+    "license": "Apache2",
+    "version": "0.0.1",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "../"
+    ],
+    "keywords": [
+        "web-component",
+        "web-components",
+        "polymer"
+    ],
+    "dependencies": {
+        "polymer": "Polymer/polymer#master",
+        "tile-storage":"BlackhawkWebComponents/tile-storage",
+        "leaflet-map": "nhnb/leaflet-map#master"
+    }
+}
